@@ -1,8 +1,8 @@
 #!/bin/bash
 # run_parallel_generation.sh - Multi-GPU Parallel Response Generation
 #
-# Usage:
-#   bash scripts/run_parallel_generation.sh
+# Usage (run from response_generation folder):
+#   bash run_parallel_generation.sh
 #
 # Configure the variables below before running.
 

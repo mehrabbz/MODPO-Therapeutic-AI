@@ -35,7 +35,7 @@ For multi-GPU setups (e.g., HPC clusters):
 
 ```bash
 # Edit configuration in the script first
-bash ../scripts/run_parallel_generation.sh
+bash run_parallel_generation.sh
 ```
 
 Or run manually on specific GPUs:
