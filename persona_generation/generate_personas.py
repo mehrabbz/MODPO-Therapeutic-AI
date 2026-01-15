@@ -186,7 +186,7 @@ def generate_persona(participant, participant_index, population):
     
     # Extract therapy preferences
     empathy_score = clean_response(participant.get('Empathy in responses (showing warmth and compassion)'))
-    listening_score = clean_response(participant.get('Active listening (understanding and reflecting the patient's feelings)'))
+    listening_score = clean_response(participant.get('Active listening (understanding and reflecting the patient\'s feelings)'))
     change_score = clean_response(participant.get('Encouraging self-motivated change (helping patients articulate goals for change)'))
     trust_score = clean_response(participant.get('Building trust and rapport (creating a supportive connection)'))
     autonomy_score = clean_response(participant.get('Respecting patient autonomy (allowing patients to lead their own change journey)'))
