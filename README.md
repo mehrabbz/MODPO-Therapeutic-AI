@@ -9,6 +9,13 @@ Official implementation of **"Multi-Objective Alignment of Language Models for P
 
 This repository provides a framework for training therapeutic AI models that balance multiple competing objectives (empathy, safety, active listening, etc.) using Multi-Objective Direct Preference Optimization (MODPO).
 
+
+<img width="3208" height="2408" alt="phase1_methodology_pipeline" src="https://github.com/user-attachments/assets/f6e44487-0aa1-4255-8938-920164c28061" />
+
+
+
+<img width="3208" height="2608" alt="phase2_methodology_pipeline" src="https://github.com/user-attachments/assets/df1b21e3-a5ee-4427-8049-de67b6aba3c9" />
+
 **Key Findings:**
 - Single-objective optimization maximizes one criterion but neglects others (e.g., 93.6% empathy but only 47.8% safety)
 - MODPO achieves balanced performance across dimensions (77.6% empathy, 62.6% safety)
