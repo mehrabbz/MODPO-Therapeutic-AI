@@ -21,7 +21,6 @@ This repository provides a framework for training therapeutic AI models that bal
 - MODPO achieves balanced performance across dimensions (77.6% empathy, 62.6% safety)
 - Therapeutic-specific criteria outperform general communication principles by 17.2%
 
-![Safety-Empathy Trade-off](docs/figures/safety_empathy_tradeoff.png)
 
 ## Installation
 
@@ -171,23 +170,13 @@ Based on clinical research, we optimize for:
 
 ### Phase 1: Training Methodology Comparison
 
-| Model | Empathy Win Rate | Safety Win Rate |
-|-------|-----------------|-----------------|
-| Base (Mistral-7B) | 11.5% | 39.6% |
-| SFT Empathy | 20.9% | 44.8% |
-| DPO Empathy | 93.6% | 47.8% |
-| DPO Soup | 52.5% | 58.4% |
-| Joint-Loss DPO | 70.8% | 62.7% |
-| **MODPO Empathy** | **77.6%** | **62.6%** |
+<img width="3208" height="2408" alt="phase1_methodology_pipeline" src="https://github.com/user-attachments/assets/f70fa8f3-71e7-44ba-b514-ee533d9115ed" />
+
 
 ### Phase 2: Criteria Framework Comparison
 
-| Model | Overall Preference | Safety |
-|-------|-------------------|--------|
-| Base | 1.1% | 46.8% |
-| MODPO Maxim | 56.9% | 51.6% |
-| MODPO Survey4 | 67.1% | 49.1% |
-| **MODPO Survey** | **74.1%** | **52.3%** |
+<img width="3208" height="2608" alt="phase2_methodology_pipeline" src="https://github.com/user-attachments/assets/feea935c-4be7-4772-9ede-cc9db6c24fa4" />
+
 
 ## Hardware Requirements
 
