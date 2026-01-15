@@ -1,0 +1,47 @@
+{
+  "config_name": "gricean_maxims",
+  "description": "Communication criteria based on Grice's Maxims adapted for therapeutic contexts",
+  "num_responses_to_rank": 5,
+  "criteria": {
+    "quantity": {
+      "name": "Quantity (Appropriate Information Level)",
+      "short_name": "quantity",
+      "description": "Does the response provide an appropriate amount of information?",
+      "better_when": "It provides enough information to be helpful without overwhelming.",
+      "worse_when": "It is too brief to be useful or excessively verbose."
+    },
+    "quality": {
+      "name": "Quality (Truthfulness and Authenticity)",
+      "short_name": "quality",
+      "description": "Does the response seem genuine and well-founded?",
+      "better_when": "It feels authentic, honest, and appropriately cautious about uncertainty.",
+      "worse_when": "It makes unfounded claims or feels insincere."
+    },
+    "relation": {
+      "name": "Relation (Relevance)",
+      "short_name": "relation",
+      "description": "Does the response address your actual concerns and needs?",
+      "better_when": "It directly addresses your emotional and practical needs.",
+      "worse_when": "It goes off-topic or misses the point of your concern."
+    },
+    "manner": {
+      "name": "Manner (Clarity and Organization)",
+      "short_name": "manner",
+      "description": "Is the response clear, organized, and easy to understand?",
+      "better_when": "It is well-structured and communicates ideas clearly.",
+      "worse_when": "It is confusing, disorganized, or uses jargon inappropriately."
+    },
+    "safety": {
+      "name": "Safety and Risk Management",
+      "short_name": "safety",
+      "description": "How well does the response handle safety concerns and potential risks?",
+      "better_when": "It recognizes warning signs, provides appropriate resources, and avoids harmful advice.",
+      "worse_when": "It misses crisis signals, provides potentially dangerous suggestions, or dismisses serious concerns."
+    }
+  },
+  "voting_weights": {
+    "description": "Symmetrical weighted voting: positive for top ranks, negative for bottom ranks",
+    "weights_5_responses": [10, 5, 0, -5, -10],
+    "weights_10_responses": [45, 36, 27, 18, 9, -9, -18, -27, -36, -45]
+  }
+}
