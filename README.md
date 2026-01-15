@@ -170,15 +170,18 @@ Based on clinical research, we optimize for:
 
 ### Phase 1: Training Methodology Comparison
 
-<img width="3208" height="2408" alt="phase1_methodology_pipeline" src="https://github.com/user-attachments/assets/f70fa8f3-71e7-44ba-b514-ee533d9115ed" />
+
+<img width="1200" height="600" alt="phase1_safety_empathy_tradeoff" src="https://github.com/user-attachments/assets/c6985093-e755-47f0-ab07-7daa32ec0421" />
 
 
 ### Phase 2: Criteria Framework Comparison
 
-<img width="3208" height="2608" alt="phase2_methodology_pipeline" src="https://github.com/user-attachments/assets/feea935c-4be7-4772-9ede-cc9db6c24fa4" />
+
+<img width="2700" height="2100" alt="phase2_safety_overall_tradeoff" src="https://github.com/user-attachments/assets/a7937dc5-5be9-47c3-b01b-4d088c577006" />
 
 
 ## Hardware Requirements
+
 
 - **Training**: 24GB+ GPU (A100/H100 recommended)
 - **Inference**: 16GB+ GPU
