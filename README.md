@@ -192,6 +192,55 @@ Training times (per model, single A100):
 - DPO/MODPO: ~2-4 hours
 - With HPO (20 trials): ~24-48 hours
 
+
+# Data Availability Section - Add to README.md
+
+Insert this section after "## Results" and before "## Hardware Requirements":
+
+---
+
+## Data Availability
+
+Due to the sensitive nature of mental health research data, the datasets used in this study (survey responses, preference rankings, patient personas) are **not publicly released**. 
+
+### Available Upon Request
+
+Anonymized data may be shared with qualified researchers who demonstrate proper credentials for human subjects research. Available datasets include:
+
+| Dataset | Description | Size |
+|---------|-------------|------|
+| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 150 |
+| Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K |
+| Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,979 |
+| **Model Responses** | **Generated responses from all trained models on test set** | **600 × 10 models** |
+| Evaluation Results | Head-to-head model comparison results | 600 |
+
+The model responses include outputs from: Base, GPT-4o, SFT Empathy, DPO Empathy, DPO Soup, Joint-Loss DPO, MODPO Empathy, MODPO Survey, MODPO Survey4, and MODPO Maxim. This enables replication of evaluation results without running inference.
+
+### Request Process
+
+To request data access, please:
+
+1. **Review requirements**: See [DATA_REQUEST.md](DATA_REQUEST.md) for eligibility criteria
+2. **Complete the form**: Download and fill out the [Data Request Form](docs/Data_Request_Form.docx)
+3. **Submit with documentation**: Send to [INSERT EMAIL] with proof of CITI/equivalent training and IRB approval (if applicable)
+
+**Requirements:**
+- Institutional affiliation with university, research institution, or healthcare organization
+- Current CITI or equivalent human subjects research training certification
+- IRB approval or exemption documentation (if applicable)
+
+Requests are typically reviewed within 2-4 weeks.
+
+### Publicly Available Resources
+
+The following are publicly available without data request:
+- **Code**: All training, evaluation, and analysis code in this repository
+- **EPITOME corpus**: Available from [Sharma et al. (2020)](https://github.com/behavioral-data/Empathy-Mental-Health)
+- **Model architecture**: Based on Mistral-7B-Instruct-v0.2
+
+---
+
 ## Citation
 
 ```bibtex
