@@ -193,11 +193,6 @@ Training times (per model, single A100):
 - With HPO (20 trials): ~24-48 hours
 
 
-# Data Availability Section - Add to README.md
-
-Insert this section after "## Results" and before "## Hardware Requirements":
-
----
 
 ## Data Availability
 
