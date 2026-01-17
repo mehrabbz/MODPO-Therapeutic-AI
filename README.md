@@ -204,10 +204,10 @@ Anonymized data may be shared with qualified researchers who demonstrate proper 
 
 | Dataset | Description | Size |
 |---------|-------------|------|
-| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 335 |
-| Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K |
+| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 335  |
+| Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K  |
 | Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,379 × 5  |
-| Model Responses | Generated responses from all trained models on test set | 600 × 10 |
+| Model Responses | Generated responses from all trained models on test set | 600 × 10  |
 
 The model responses include outputs from: Base, GPT-4o, SFT Empathy, DPO Empathy, DPO Soup, Joint-Loss DPO, MODPO Empathy, MODPO Survey, MODPO Survey4, and MODPO Maxim. This enables replication of evaluation results without running inference.
 
