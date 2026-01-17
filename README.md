@@ -205,9 +205,9 @@ Anonymized data may be shared with qualified researchers who demonstrate proper 
 | Dataset | Description | Size |
 |---------|-------------|------|
 | Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 335  |
-| Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K  |
-| Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,379 × 5  |
-| Model Responses | Generated responses from all trained models on test set | 600 × 10  |
+| Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K |
+| Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,379 × 5 |
+| Model Responses | Generated responses from all trained models on test set | 600 × 10 |
 
 The model responses include outputs from: Base, GPT-4o, SFT Empathy, DPO Empathy, DPO Soup, Joint-Loss DPO, MODPO Empathy, MODPO Survey, MODPO Survey4, and MODPO Maxim. This enables replication of evaluation results without running inference.
 
@@ -225,13 +225,6 @@ To request data access, please:
 - IRB approval or exemption documentation (if applicable)
 
 Requests are typically reviewed within 2-4 weeks.
-
-### Publicly Available Resources
-
-The following are publicly available without data request:
-- **Code**: All training, evaluation, and analysis code in this repository
-- **EPITOME corpus**: Available from [Sharma et al. (2020)](https://github.com/behavioral-data/Empathy-Mental-Health)
-- **Model architecture**: Based on Mistral-7B-Instruct-v0.2
 
 ---
 
