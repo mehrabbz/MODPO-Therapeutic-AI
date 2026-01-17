@@ -204,11 +204,10 @@ Anonymized data may be shared with qualified researchers who demonstrate proper 
 
 | Dataset | Description | Size |
 |---------|-------------|------|
-| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 150 |
+| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 335 |
 | Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K |
-| Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,979 |
-| **Model Responses** | **Generated responses from all trained models on test set** | **600 × 10 models** |
-| Evaluation Results | Head-to-head model comparison results | 600 |
+| Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,379 × 5 |
+| Model Responses | Generated responses from all trained models on test set | 600 × 10 models |
 
 The model responses include outputs from: Base, GPT-4o, SFT Empathy, DPO Empathy, DPO Soup, Joint-Loss DPO, MODPO Empathy, MODPO Survey, MODPO Survey4, and MODPO Maxim. This enables replication of evaluation results without running inference.
 
@@ -216,9 +215,9 @@ The model responses include outputs from: Base, GPT-4o, SFT Empathy, DPO Empathy
 
 To request data access, please:
 
-1. **Review requirements**: See [DATA_REQUEST.md](DATA_REQUEST.md) for eligibility criteria
+1. **Review requirements**: See [DATA_REQUEST.md](docs/DATA_REQUEST.md) for eligibility criteria
 2. **Complete the form**: Download and fill out the [Data Request Form](docs/Data_Request_Form.docx)
-3. **Submit with documentation**: Send to [INSERT EMAIL] with proof of CITI/equivalent training and IRB approval (if applicable)
+3. **Submit with documentation**: Send to mehrabbzapril@gmail.com with proof of CITI/equivalent training and IRB approval (if applicable)
 
 **Requirements:**
 - Institutional affiliation with university, research institution, or healthcare organization
