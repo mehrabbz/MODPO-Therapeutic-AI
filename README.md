@@ -204,7 +204,7 @@ Anonymized data may be shared with qualified researchers who demonstrate proper 
 
 | Dataset | Description | Size |
 |---------|-------------|------|
-| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 335  |
+| Patient Personas | Anonymized synthetic personas with demographics and therapeutic preferences | 335 |
 | Preference Rankings | LLM-evaluated rankings across therapeutic criteria | ~119K |
 | Therapeutic Q&A | Questions from EPITOME corpus with generated responses | 2,379 × 5 |
 | Model Responses | Generated responses from all trained models on test set | 600 × 10 |
@@ -215,9 +215,8 @@ The model responses include outputs from: Base, GPT-4o, SFT Empathy, DPO Empathy
 
 To request data access, please:
 
-1. **Review requirements**: See [DATA_REQUEST.md](docs/DATA_REQUEST.md) for eligibility criteria
-2. **Complete the form**: Download and fill out the [Data Request Form](docs/Data_Request_Form.docx)
-3. **Submit with documentation**: Send to mehrabbzapril@gmail.com with proof of CITI/equivalent training and IRB approval (if applicable)
+1. **Complete the form**: Download and fill out the [Data Request Form](docs/Data_Request_Form.docx)
+2. **Submit with documentation**: Send to mehrabbzapril@gmail.com with proof of CITI/equivalent training and IRB approval (if applicable)
 
 **Requirements:**
 - Institutional affiliation with university, research institution, or healthcare organization
@@ -247,8 +246,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - EPITOME dataset from Sharma et al. (2020)
 - MODPO methodology from Zhou et al. (2024)
-- DPO Soup from Jang et al. (2023)
 
 ## Contact
 
-For questions or issues, please open a GitHub issue or contact [your-email@example.com].
+For questions or issues, please open a GitHub issue or contact [mehrabbzapril@gmail.com].
