@@ -187,12 +187,6 @@ Based on clinical research, we optimize for:
 - **Inference**: 16GB+ GPU
 - **Evaluation**: CPU only (uses OpenAI API)
 
-Training times (per model, single A100):
-- SFT: ~1-2 hours
-- DPO/MODPO: ~2-4 hours
-- With HPO (20 trials): ~24-48 hours
-
-
 
 ## Data Availability
 
@@ -242,10 +236,6 @@ Requests are typically reviewed within 2-4 weeks.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## Acknowledgments
-
-- EPITOME dataset from Sharma et al. (2020)
-- MODPO methodology from Zhou et al. (2024)
 
 ## Contact
 
