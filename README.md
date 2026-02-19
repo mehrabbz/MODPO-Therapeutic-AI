@@ -1,6 +1,6 @@
 # MODPO: Multi-Objective Alignment for Personalized Psychotherapy
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/)
+[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2602.16053)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Official implementation of **"Multi-Objective Alignment of Language Models for Personalized Psychotherapy"**.
