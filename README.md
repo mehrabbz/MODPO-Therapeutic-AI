@@ -1,6 +1,7 @@
 # MODPO: Multi-Objective Alignment for Personalized Psychotherapy
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org/abs/2602.16053)
+[![Project Page](https://img.shields.io/badge/Project-Page-blue)](https://mehrabbz.github.io/MODPO-Therapeutic-AI/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Official implementation of **"Multi-Objective Alignment of Language Models for Personalized Psychotherapy"**.
@@ -224,11 +225,11 @@ Requests are typically reviewed within 2-4 weeks.
 ## Citation
 
 ```bibtex
-@article{beikzadeh2025modpo,
+@article{beikzadeh2026modpo,
   title={Multi-Objective Alignment of Language Models for Personalized Psychotherapy},
-  author={Beikzadeh, Mehrab and Malgaroli, Matteo and Gabriel, Saadia},
-  journal={arXiv preprint},
-  year={2025}
+  author={Beikzadeh, Mehrab and Asadollah salmanpour, Yasaman and Suvarna, Ashima and Sankararaman, Sriram and Malgaroli, Matteo and Sarrafzadeh, Majid and Gabriel, Saadia},
+  journal={arXiv preprint arXiv:2602.16053},
+  year={2026}
 }
 ```
 
