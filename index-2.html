@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MODPO: Multi-Objective Alignment for Personalized Psychotherapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c0f;
+      --bg-card: #15151a;
+      --bg-card-hover: #1a1a22;
+      --text: #ececef;
+      --text-dim: #8a8a96;
+      --text-muted: #5a5a66;
+      --accent: #6c8cff;
+      --accent-glow: rgba(108, 140, 255, 0.15);
+      --accent2: #a78bfa;
+      --accent3: #34d399;
+      --border: rgba(255,255,255,0.06);
+      --border-hover: rgba(255,255,255,0.12);
+      --max-width: 900px;
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 24px;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(108,140,255,0.08) 0%, rgba(167,139,250,0.04) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      background: var(--accent-glow);
+      border: 1px solid rgba(108,140,255,0.2);
+      padding: 8px 20px;
+      border-radius: 100px;
+      margin-bottom: 36px;
+      letter-spacing: 0.5px;
+    }
+    .hero .badge .dot {
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero h1 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      line-height: 1.15;
+      max-width: 780px;
+      margin-bottom: 28px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero .subtitle {
+      font-size: 17px;
+      color: var(--text-dim);
+      max-width: 560px;
+      margin-bottom: 44px;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .authors-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 18px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    .authors-row a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s;
+    }
+    .authors-row a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    .authors-row sup { color: var(--accent); font-size: 11px; font-weight: 600; }
+    .affiliations-row {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 44px;
+    }
+    .affiliations-row sup { color: var(--accent); font-weight: 600; }
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s;
+      font-family: 'Outfit', sans-serif;
+    }
+    .cta-btn.primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 0 20px rgba(108,140,255,0.25);
+    }
+    .cta-btn.primary:hover {
+      background: #5a7bff;
+      box-shadow: 0 0 30px rgba(108,140,255,0.35);
+      transform: translateY(-1px);
+    }
+    .cta-btn.ghost {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border-hover);
+    }
+    .cta-btn.ghost:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+    .cta-btn svg { width: 18px; height: 18px; }
+    .scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 12px;
+      animation: bobble 2.5s ease infinite;
+    }
+    .scroll-hint .arrow {
+      width: 20px; height: 20px;
+      border-right: 1.5px solid var(--text-muted);
+      border-bottom: 1.5px solid var(--text-muted);
+      transform: rotate(45deg);
+    }
+    @keyframes bobble {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(8px); }
+    }
+
+    .content { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+    .section {
+      padding: 80px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .section.visible { opacity: 1; transform: translateY(0); }
+    .section-label {
+      font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400; font-size: 2.2rem;
+      margin-bottom: 24px; letter-spacing: -0.01em;
+    }
+    p { color: var(--text-dim); margin-bottom: 16px; font-weight: 300; }
+    .sep {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-hover), transparent);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .stat-card {
+      background: var(--bg-card);
+      padding: 32px 24px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .stat-card:hover { background: var(--bg-card-hover); }
+    .stat-number {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.4rem; font-weight: 400; margin-bottom: 4px;
+    }
+    .stat-card:nth-child(1) .stat-number { color: var(--accent); }
+    .stat-card:nth-child(2) .stat-number { color: var(--accent2); }
+    .stat-card:nth-child(3) .stat-number { color: var(--accent3); }
+    .stat-card:nth-child(4) .stat-number { color: #f59e0b; }
+    .stat-label { font-size: 13px; color: var(--text-muted); }
+
+    .fig-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 32px;
+      transition: border-color 0.3s;
+    }
+    .fig-card:hover { border-color: var(--border-hover); }
+    .fig-card img { width: 100%; height: auto; display: block; }
+    .fig-card .caption {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.6; font-weight: 300;
+    }
+    .fig-card .caption strong { color: var(--text-dim); font-weight: 500; }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(108,140,255,0.06), rgba(167,139,250,0.04));
+      border: 1px solid rgba(108,140,255,0.12);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-top: 32px;
+    }
+    .highlight-box h3 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400; font-size: 1.3rem; margin-bottom: 12px;
+    }
+    .highlight-box p { margin-bottom: 0; font-size: 15px; }
+
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0; align-items: center;
+      margin-top: 32px;
+    }
+    .compare-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px; text-align: center;
+    }
+    .compare-card .label {
+      font-size: 13px; color: var(--text-muted);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .compare-card .values { font-family: 'Instrument Serif', serif; font-size: 1.6rem; }
+    .compare-card .values .emp { color: var(--accent); }
+    .compare-card .values .saf { color: var(--accent3); }
+    .compare-card .values .dim { color: var(--text-muted); font-size: 0.9rem; }
+    .compare-vs { font-size: 13px; color: var(--text-muted); padding: 0 20px; font-weight: 500; }
+
+    .bib-block {
+      position: relative;
+      background: #111118;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-top: 24px; overflow: hidden;
+    }
+    .bib-block pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--text-dim);
+      line-height: 1.8; padding: 28px;
+      overflow-x: auto; white-space: pre;
+    }
+    .bib-block .key { color: var(--accent); }
+    .bib-block .val { color: var(--accent3); }
+    .copy-btn {
+      position: absolute; top: 14px; right: 14px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 7px 16px; border-radius: 8px;
+      font-size: 12px; cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500; transition: all 0.2s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+    footer {
+      text-align: center; padding: 60px 24px;
+      font-size: 13px; color: var(--text-muted); font-weight: 300;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 700px) {
+      .stats-row { grid-template-columns: 1fr 1fr; }
+      .compare-row { grid-template-columns: 1fr; gap: 12px; }
+      .compare-vs { padding: 4px 0; text-align: center; }
+      .hero h1 { font-size: 2rem; }
+      .authors-row { font-size: 13px; }
+      .section { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="badge"><span class="dot"></span> Preprint 2025</div>
+    <h1>Multi-Objective Alignment of Language Models for <em>Personalized Psychotherapy</em></h1>
+    <p class="subtitle">A patient-guided framework that balances empathy, safety, and therapeutic quality through multi-objective preference optimization.</p>
+    <div class="authors-row">
+      <span><a href="https://github.com/mehrabbz">Mehrab Beikzadeh</a><sup>1</sup></span>
+      <span>Yasaman Asadollah Salmanpour<sup>2</sup></span>
+      <span>Ashima Suvarna<sup>1</sup></span>
+      <span>Sriram Sankararaman<sup>1</sup></span>
+      <span>Matteo Malgaroli<sup>3</sup></span>
+      <span>Majid Sarrafzadeh<sup>1</sup></span>
+      <span><a href="https://saadiagabriel.github.io/">Saadia Gabriel</a><sup>1</sup></span>
+    </div>
+    <div class="affiliations-row">
+      <sup>1</sup> UCLA CS &nbsp;·&nbsp;
+      <sup>2</sup> UT Austin Psychology &nbsp;·&nbsp;
+      <sup>3</sup> NYU Medicine
+    </div>
+    <div class="cta-row">
+      <a class="cta-btn primary" href="https://arxiv.org/abs/2602.16053" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Read Paper
+      </a>
+      <a class="cta-btn ghost" href="https://github.com/mehrabbz/MODPO-Therapeutic-AI" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        Code
+      </a>
+    </div>
+    <div class="scroll-hint"><span class="arrow"></span></div>
+  </div>
+
+  <div class="content">
+    <div class="section" id="stats">
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">77.6%</div>
+          <div class="stat-label">Empathy Win Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">62.6%</div>
+          <div class="stat-label">Safety Win Rate</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">+17.2%</div>
+          <div class="stat-label">vs. General Criteria</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">335</div>
+          <div class="stat-label">Patient Participants</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section" id="abstract">
+      <div class="section-label">Abstract</div>
+      <h2>Balancing empathy and safety in therapeutic AI</h2>
+      <p>Mental health disorders affect over 1 billion people worldwide, yet access to care remains limited by workforce shortages and cost constraints. While AI systems show therapeutic promise, current alignment approaches optimize objectives independently, failing to balance patient preferences with clinical safety.</p>
+      <p>We survey 335 individuals with lived mental health experience to collect preference rankings across therapeutic dimensions, then develop a multi-objective alignment framework using direct preference optimization. We train reward models for six criteria — empathy, safety, active listening, self-motivated change, trust/rapport, and patient autonomy — and systematically compare multi-objective approaches against single-objective optimization, supervised fine-tuning, and parameter merging.</p>
+      <p>Multi-objective DPO (MODPO) achieves superior balance compared to single-objective optimization, and therapeutic criteria outperform general communication principles by 17.2%. Blinded clinician evaluation confirms MODPO is consistently preferred, with LLM-evaluator agreement comparable to inter-clinician reliability.</p>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section" id="results">
+      <div class="section-label">Key Result</div>
+      <h2>The safety–empathy tradeoff</h2>
+      <p>Single-objective optimization forces a tradeoff: maximizing empathy comes at the cost of safety. MODPO finds the upper-right region — high on both dimensions simultaneously.</p>
+      <div class="compare-row">
+        <div class="compare-card">
+          <div class="label">Single-Objective DPO</div>
+          <div class="values">
+            <span class="emp">93.6%</span> <span class="dim">empathy</span><br>
+            <span class="saf">47.8%</span> <span class="dim">safety</span>
+          </div>
+        </div>
+        <div class="compare-vs">vs</div>
+        <div class="compare-card">
+          <div class="label">MODPO (Ours)</div>
+          <div class="values">
+            <span class="emp">77.6%</span> <span class="dim">empathy</span><br>
+            <span class="saf">62.6%</span> <span class="dim">safety</span>
+          </div>
+        </div>
+      </div>
+      <div class="fig-card">
+        <img src="static/images/fig_scatter.png" alt="Safety-empathy scatter plot">
+        <div class="caption"><strong>Figure 2.</strong> Safety-empathy performance across training approaches. MODPO achieves the best joint balance of both objectives in the upper-right region.</div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section" id="preferences">
+      <div class="section-label">Patient Survey</div>
+      <h2>What patients value in therapy</h2>
+      <p>We surveyed 335 individuals with lived mental health experience. Empathy emerged as the dominant priority (62.7%), but all five therapeutic dimensions scored uniformly high (4.16–4.35 out of 5.0) — validating the need for multi-objective optimization rather than optimizing any single criterion alone.</p>
+      <div class="fig-card">
+        <img src="static/images/fig_preference.png" alt="Primary therapeutic preference distribution">
+        <div class="caption"><strong>Figure 1.</strong> Primary therapeutic preference distribution across persona sets, showing empathy as the dominant preference with consistently high ratings across all dimensions.</div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section" id="validation">
+      <div class="section-label">Human Validation</div>
+      <h2>Clinicians prefer MODPO</h2>
+      <p>Six licensed mental health clinicians conducted blinded evaluations across 100 therapeutic scenarios. MODPO Survey was preferred across every dimension, with the largest margins on empathy (85%), self-motivated change (80%), and active listening (77%).</p>
+      <div class="fig-card">
+        <img src="static/images/fig_clinician.png" alt="Clinician evaluation win rates">
+        <div class="caption"><strong>Figure 5a.</strong> Clinician win rates by criterion. MODPO Survey is consistently preferred over the base model across all seven evaluation dimensions.</div>
+      </div>
+      <div class="highlight-box">
+        <h3>LLM-as-Judge validated</h3>
+        <p>Our persona-based LLM evaluation produces judgments that align with clinician annotations at a level comparable to inter-clinician agreement — supporting its use as a scalable proxy for expert judgment.</p>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section" id="method">
+      <div class="section-label">Method</div>
+      <h2>Multi-objective preference optimization</h2>
+      <p>Our approach combines patient-centered preference collection with multi-objective direct preference optimization (MODPO). We survey individuals with lived mental health experience, train separate reward models for each therapeutic criterion, and use MODPO's margin-based framework to simultaneously optimize across all objectives while treating safety as a non-negotiable constraint.</p>
+      <div class="fig-card">
+        <img src="static/images/fig_pipeline.png" alt="Methodological pipeline">
+        <div class="caption"><strong>Figure 6.</strong> Complete methodological pipeline showing the flow from dataset preparation through final evaluation for both experimental phases.</div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="section" id="citation">
+      <div class="section-label">Citation</div>
+      <h2>BibTeX</h2>
+      <div class="bib-block">
+        <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+        <pre><code><span class="key">@article</span>{beikzadeh2025modpo,
+  <span class="key">title</span>     = <span class="val">{Multi-Objective Alignment of Language Models
+               for Personalized Psychotherapy}</span>,
+  <span class="key">author</span>    = <span class="val">{Beikzadeh, Mehrab and Salmanpour, Yasaman
+               Asadollah and Suvarna, Ashima and
+               Sankararaman, Sriram and Malgaroli, Matteo
+               and Sarrafzadeh, Majid and Gabriel, Saadia}</span>,
+  <span class="key">journal</span>   = <span class="val">{arXiv preprint arXiv:2602.16053}</span>,
+  <span class="key">year</span>      = <span class="val">{2025}</span>
+}</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <footer>MODPO · <a href="https://arxiv.org/abs/2602.16053">arXiv 2602.16053</a> · UCLA · 2025</footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.section').forEach(el => observer.observe(el));
+
+    function copyBibtex() {
+      const text = document.querySelector('.bib-block code').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+</body>
+</html>

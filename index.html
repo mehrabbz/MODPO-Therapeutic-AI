@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MODPO: Multi-Objective Alignment for Personalized Psychotherapy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --accent: #2563eb;
+      --accent-light: #dbeafe;
+      --border: #e5e5e0;
+      --card-bg: #ffffff;
+      --max-width: 820px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header */
+    .header {
+      padding: 80px 24px 48px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .header .venue-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 700;
+      font-size: 2.6rem;
+      line-height: 1.2;
+      margin-bottom: 32px;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+
+    /* Authors */
+    .authors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 20px;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+
+    .authors a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .authors a:hover { color: var(--accent); }
+
+    .affiliations {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    .affiliations sup {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Links bar */
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .links a.primary {
+      background: var(--text);
+      color: #fff;
+    }
+    .links a.primary:hover { background: #333; }
+
+    .links a.secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .links a.secondary:hover { border-color: #bbb; }
+
+    .links svg { width: 18px; height: 18px; }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: var(--border);
+      margin: 56px auto;
+    }
+
+    /* Sections */
+    section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px 56px;
+    }
+
+    h2 {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    /* Key findings cards */
+    .findings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .finding-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .finding-card .label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .finding-card .stat {
+      font-family: 'Source Serif 4', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .finding-card .desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* Figures */
+    .figure-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 28px 0;
+    }
+
+    .figure-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .figure-caption {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 14px;
+      line-height: 1.6;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    .figure-caption strong {
+      color: var(--text);
+    }
+
+    /* BibTeX */
+    .bibtex-container {
+      position: relative;
+      background: #1e1e2e;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .bibtex-container pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #cdd6f4;
+      line-height: 1.7;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: #cdd6f4;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s;
+    }
+    .copy-btn:hover { background: rgba(255,255,255,0.2); }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      font-size: 13px;
+      color: #999;
+      border-top: 1px solid var(--border);
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.8rem; }
+      .header { padding: 48px 20px 32px; }
+      .findings-grid { grid-template-columns: 1fr; }
+      .authors { gap: 4px 14px; font-size: 14px; }
+    }
+
+    /* Fade in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in:nth-child(2) { animation-delay: 0.1s; }
+    .fade-in:nth-child(3) { animation-delay: 0.2s; }
+    .fade-in:nth-child(4) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <div class="header fade-in">
+    <div class="venue-badge">Preprint 2025</div>
+    <h1>Multi-Objective Alignment of Language Models for Personalized Psychotherapy</h1>
+
+    <div class="authors">
+      <span><a href="https://github.com/mehrabbz">Mehrab Beikzadeh</a><sup>1</sup>,</span>
+      <span>Yasaman Asadollah Salmanpour<sup>2</sup>,</span>
+      <span>Ashima Suvarna<sup>1</sup>,</span>
+      <span>Sriram Sankararaman<sup>1</sup>,</span>
+      <span>Matteo Malgaroli<sup>3</sup>,</span>
+      <span>Majid Sarrafzadeh<sup>1</sup>,</span>
+      <span><a href="https://saadiagabriel.github.io/">Saadia Gabriel</a><sup>1</sup></span>
+    </div>
+
+    <div class="affiliations">
+      <sup>1</sup> UCLA Computer Science &nbsp;&nbsp;
+      <sup>2</sup> UT Austin Psychology &nbsp;&nbsp;
+      <sup>3</sup> NYU Grossman School of Medicine
+    </div>
+
+    <div class="links">
+      <a class="primary" href="https://arxiv.org/abs/2602.16053" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        Paper
+      </a>
+      <a class="secondary" href="https://github.com/mehrabbz/MODPO-Therapeutic-AI" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        Code
+      </a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Abstract -->
+  <section class="fade-in">
+    <h2>Abstract</h2>
+    <p>
+      Mental health disorders affect over 1 billion people worldwide, yet access to care remains limited by workforce shortages and cost constraints. While AI systems show therapeutic promise, current alignment approaches optimize objectives independently, failing to balance patient preferences with clinical safety.
+    </p>
+    <p>
+      We survey 335 individuals with lived mental health experience to collect preference rankings across therapeutic dimensions, then develop a multi-objective alignment framework using direct preference optimization. We train reward models for six criteria—empathy, safety, active listening, self-motivated change, trust/rapport, and patient autonomy—and systematically compare multi-objective approaches against single-objective optimization, supervised fine-tuning, and parameter merging.
+    </p>
+    <p>
+      Multi-objective DPO (MODPO) achieves superior balance (77.6% empathy, 62.6% safety) compared to single-objective optimization (93.6% empathy, 47.8% safety), and therapeutic criteria outperform general communication principles by 17.2%. Blinded clinician evaluation confirms MODPO is consistently preferred, with LLM-evaluator agreement comparable to inter-clinician reliability.
+    </p>
+  </section>
+
+  <!-- Key Findings -->
+  <section class="fade-in">
+    <h2>Key Findings</h2>
+    <div class="findings-grid">
+      <div class="finding-card">
+        <div class="label">Balance</div>
+        <div class="stat">77.6% / 62.6%</div>
+        <div class="desc">MODPO empathy and safety win rates — balancing both objectives simultaneously</div>
+      </div>
+      <div class="finding-card">
+        <div class="label">Domain Specificity</div>
+        <div class="stat">+17.2%</div>
+        <div class="desc">Therapeutic criteria outperform general communication principles (Grice's Maxims)</div>
+      </div>
+      <div class="finding-card">
+        <div class="label">Patient Preference</div>
+        <div class="stat">74.1%</div>
+        <div class="desc">Overall therapeutic preference win rate for MODPO Survey model</div>
+      </div>
+      <div class="finding-card">
+        <div class="label">Clinician Validated</div>
+        <div class="stat">85%</div>
+        <div class="desc">Clinician preference for MODPO on empathy — preferred across all therapeutic dimensions</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety-Empathy Figure -->
+  <section class="fade-in">
+    <h2>The Safety–Empathy Tradeoff</h2>
+    <p>
+      Single-objective optimization forces a tradeoff: maximizing empathy (93.6%) comes at the cost of safety (47.8%). Multi-objective approaches like MODPO find the upper-right region of the space — high on both dimensions simultaneously.
+    </p>
+    <div class="figure-container">
+      <img src="static/images/fig2_safety_empathy.png" alt="Safety-empathy scatter plot showing MODPO achieving high performance on both dimensions">
+      <div class="figure-caption">
+        <strong>Figure 2.</strong> Safety-empathy performance across training approaches. Each point shows a model's average win rate computed across all pairwise head-to-head comparisons. MODPO achieves the best balance of both objectives.
+      </div>
+    </div>
+  </section>
+
+  <!-- Clinician Validation Figure -->
+  <section class="fade-in">
+    <h2>Clinician Validation</h2>
+    <p>
+      Six licensed mental health clinicians conducted blinded evaluations comparing MODPO Survey against the base model across 100 therapeutic scenarios. MODPO was preferred on every dimension.
+    </p>
+    <div class="figure-container">
+      <img src="static/images/fig5_clinician_validation.png" alt="Clinician evaluation win rates showing MODPO preferred across all criteria">
+      <div class="figure-caption">
+        <strong>Figure 5a.</strong> Clinician win rates by criterion. MODPO Survey (teal) is consistently preferred over the base model (purple) across all seven evaluation dimensions, with the largest margins on empathy (85%), self-motivated change (80%), and active listening (77%).
+      </div>
+    </div>
+  </section>
+
+  <!-- Method Overview -->
+  <section class="fade-in">
+    <h2>Method</h2>
+    <p>
+      Our approach combines patient-centered preference collection with multi-objective direct preference optimization (MODPO). We survey individuals with lived mental health experience, train separate reward models for each therapeutic criterion, and use MODPO's margin-based framework to simultaneously optimize across all objectives while treating safety as a non-negotiable constraint.
+    </p>
+    <div class="figure-container">
+      <img src="static/images/fig6_pipeline.png" alt="Complete methodological pipeline">
+      <div class="figure-caption">
+        <strong>Figure 6.</strong> Complete methodological pipeline showing the flow from dataset preparation through final evaluation across both experimental phases.
+      </div>
+    </div>
+  </section>
+
+  <!-- Citation -->
+  <section class="fade-in">
+    <h2>Citation</h2>
+    <div class="bibtex-container">
+      <button class="copy-btn" onclick="copyBibtex()">Copy</button>
+      <pre><code>@article{beikzadeh2025modpo,
+  title={Multi-Objective Alignment of Language Models 
+         for Personalized Psychotherapy},
+  author={Beikzadeh, Mehrab and Salmanpour, Yasaman 
+          Asadollah and Suvarna, Ashima and 
+          Sankararaman, Sriram and Malgaroli, Matteo 
+          and Sarrafzadeh, Majid and Gabriel, Saadia},
+  journal={arXiv preprint arXiv:2602.16053},
+  year={2025}
+}</code></pre>
+    </div>
+  </section>
+
+  <footer>
+    MODPO: Multi-Objective Alignment for Personalized Psychotherapy · UCLA · 2025
+  </footer>
+
+  <script>
+    function copyBibtex() {
+      const bibtex = document.querySelector('.bibtex-container code').innerText;
+      navigator.clipboard.writeText(bibtex).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 2000);
+      });
+    }
+  </script>
+</body>
+</html>
